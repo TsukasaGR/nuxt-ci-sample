@@ -11,7 +11,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest",
-    "deploy": "yarn netlify deploy --prod -d dist -a ${NETLIFY_AUTH_TOKEN} -s ${NETLIFY_SITE_ID}"
+    "deploy": "netlify deploy --prod -d dist -a ${NETLIFY_AUTH_TOKEN} -s ${NETLIFY_SITE_ID}"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint"
