@@ -4,7 +4,7 @@
       <card title="Free" icon="github-circle">
         Open source on
         <a href="https://github.com/buefy/buefy">
-          GitHub💕
+          GitHub💕💕💕
         </a>
       </card>
 
