@@ -35,4 +35,4 @@ jobs:
     working_directory: ~/nuxt-ci-sample
     steps:
       - checkout
-      - run: yarn deploy
+      - run: yarn netlify deploy --prod -d dist -a ${NETLIFY_AUTH_TOKEN} -s ${NETLIFY_SITE_ID}
