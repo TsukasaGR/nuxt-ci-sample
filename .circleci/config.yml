@@ -35,4 +35,7 @@ jobs:
     working_directory: ~/nuxt-ci-sample
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn deploy --prod -d dist -a ${NETLIFY_AUTH_TOKEN} -s ${NETLIFY_SITE_ID}
