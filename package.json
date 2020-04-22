@@ -22,6 +22,7 @@
     }
   },
   "dependencies": {
+    "netlify-cli": "^2.47.0",
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.2"
   },
@@ -38,7 +39,6 @@
     "husky": "^2.6.0",
     "jest": "^24.1.0",
     "lint-staged": "^8.2.1",
-    "netlify-cli": "^2.47.0",
     "prettier": "^1.16.4",
     "vue-jest": "^4.0.0-0"
   }
