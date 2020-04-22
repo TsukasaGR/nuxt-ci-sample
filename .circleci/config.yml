@@ -5,6 +5,7 @@ workflows:
     jobs:
       - build
       - deploy:
+          context: Netlify
           requires:
             - build
           filters:
@@ -29,7 +30,6 @@ jobs:
       - run: yarn test
       - run: yarn build
   deploy:
-    context: Netlify
     working_directory: ~/nuxt-ci-sample
     steps:
       - checkout
