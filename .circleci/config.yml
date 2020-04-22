@@ -1,29 +1,24 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
+
+# 汎用的に利用したい設定を保存する
 references:
+  # 保存されているnode_modulesのキャッシュを復元する
   restore_cache: &restore_cache
       keys:
         - v1-dependencies-{{ checksum "yarn.lock" }}
+  # node_modulesをキャッシュに保存する
   save_cache: &save_cache
       paths:
         - node_modules
       key: v1-dependencies-{{ checksum "yarn.lock" }}
+  # 各ステップを動かす際の共通コンテナを設定する
   container_config: &container_config
     docker:
       - image: circleci/node:12.14.0
     working_directory: ~/nuxt-ci-sample
-workflows:
-  test_and_deploy:
-    jobs:
-      - test
-      - build_and_deploy:
-          context: Netlify
-          requires:
-            - test
-          filters:
-            branches:
-              only:
-                - master
+
+# ジョブを定義する
 jobs:
   test:
     <<: *container_config
@@ -40,3 +35,19 @@ jobs:
       - restore_cache: *restore_cache
       - run: yarn build
       - run: yarn deploy --prod -d dist -a ${NETLIFY_AUTH_TOKEN} -s ${NETLIFY_SITE_ID}
+
+# 実際に動かすワークフローを設定する
+workflows:
+  # ワークフロー名
+  test_and_deploy:
+    # ワークフロー内で実行するジョブ
+    jobs:
+      - test
+      - build_and_deploy:
+          context: Netlify
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
