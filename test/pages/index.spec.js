@@ -5,6 +5,6 @@ describe('Logo', () => {
   test('is a Vue instance', () => {
     const wrapper = mount(Index)
     expect(wrapper.isVueInstance()).toBeTruthy()
-    expect(wrapper.find('b').text()).toContain('Every')
+    expect(wrapper.find('b').text()).toContain('aaaaaaaa')
   })
 })
